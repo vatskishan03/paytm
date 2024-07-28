@@ -1,11 +1,12 @@
-const express =require("express");
-const mainRouter= require("./routes/index");
-const rootRouter= require("./routes/index");
-const app= express();
-const cors= require("cors");
+const express = require('express');
+const cors = require("cors");
+const rootRouter = require("./routes/index");
+
+const app = express();
 
 app.use(cors());
- 
-const mainRouter= require("./routes/index");
-app.use("api/v1",mainRouter);   
+app.use(express.json());
+
+app.use("/api/v1", rootRouter);
+
 app.listen(3000);

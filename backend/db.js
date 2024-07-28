@@ -1,7 +1,6 @@
 // backend/db.js
 const mongoose = require('mongoose');
-
-// Create a Schema for Users
+mongoose.connect("mongodb://localhost:27017/paytm")
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
