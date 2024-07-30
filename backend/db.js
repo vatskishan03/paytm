@@ -1,6 +1,6 @@
 // backend/db.js
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27017/paytm")
+mongoose.connect(process.env.MONGODB_URI , {useNewUrlParser: true, useUnifiedTopology: true});
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
