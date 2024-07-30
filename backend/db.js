@@ -1,6 +1,17 @@
 // backend/db.js
+require('dotenv').config();  // Load environment variables
+
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI , {useNewUrlParser: true, useUnifiedTopology: true});
+
+const dbURI = process.env.MONGODB_URI;
+
+mongoose.connect(dbURI)
+    .then(() => {
+        console.log('MongoDB connected successfully');
+    })
+    .catch((error) => {
+        console.error('MongoDB connection error:', error);
+    });
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -42,10 +53,10 @@ const accountSchema = new mongoose.Schema({
     }
 });
 
-const Account = mongoose.model('Account', accountSchema);
 const User = mongoose.model('User', userSchema);
+const Account = mongoose.model('Account', accountSchema);
 
 module.exports = {
-	User,
+    User,
     Account
 };
